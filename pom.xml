@@ -5,19 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.rombit.romcore</groupId>
-    <artifactId>POC-vertx-docker-microservice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>POC-ProductService</artifactId>
+    <version>0.0.1</version>
 
-    <name>Sample Docker Image for Java Vert.x MicroService</name>
+    <name>POC Product MicroService</name>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <!-- dependencies -->
         <vertx.version>3.3.2</vertx.version>
-    </properties>
 
+        <!-- plugin dependencies -->
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <docker-maven-plugin.version>0.4.11</docker-maven-plugin.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -36,10 +40,23 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <imageName>poc/product-service</imageName>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
                 </configuration>
             </plugin>
         </plugins>

@@ -11,13 +11,13 @@ import io.vertx.ext.web.handler.BodyHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RestVerticle extends AbstractVerticle {
+public class ProductRestVerticle extends AbstractVerticle {
 
     private Map<String, JsonObject> products = new HashMap<>();
 
     // Convenience method so you can run it in your IDE
     public static void main(String[] args) {
-        Runner.runExample(RestVerticle.class);
+        Runner.runExample(ProductRestVerticle.class);
     }
 
     @Override

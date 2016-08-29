@@ -9,8 +9,8 @@
 # Extend vert.x image
 FROM vertx/vertx3
 
-ENV VERTICLE_NAME be.rombit.romcore.docker.vertx.poc.RestVerticle
-ENV VERTICLE_FILE target/POC-vertx-docker-microservice-0.0.1-SNAPSHOT.jar
+ENV VERTICLE_NAME be.rombit.romcore.docker.vertx.poc.ProductRestVerticle
+ENV VERTICLE_FILE target/POC-ProductService-0.0.1.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
