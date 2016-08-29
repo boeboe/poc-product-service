@@ -10,7 +10,7 @@
 FROM vertx/vertx3
 
 ENV VERTICLE_NAME be.rombit.romcore.docker.vertx.poc.ProductRestVerticle
-ENV VERTICLE_FILE target/POC-ProductService-0.0.1.jar
+ENV VERTICLE_FILE target/poc-product-service-0.0.1.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
