@@ -52,7 +52,8 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${docker-maven-plugin.version}</version>
                 <configuration>
-                    <imageName>poc/product-service</imageName>
+                    <serverId>rombit</serverId>
+                    <imageName>repository.romcore.io:8443/poc-product-service</imageName>
                     <dockerDirectory>${project.basedir}</dockerDirectory>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>

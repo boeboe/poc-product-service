@@ -15,6 +15,10 @@ The API allows you to list all products, retrieve details for a particular produ
 
 **Add a product:** 
 
+    POST /products
+
+**Update a product:** 
+
     PUT /products/<product_id>
 
 
