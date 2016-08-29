@@ -1,5 +1,6 @@
 package be.rombit.romcore.docker.vertx.poc;
 
+import com.jcabi.manifests.Manifests;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.JsonArray;
@@ -29,14 +30,24 @@ public class ProductRestVerticle extends AbstractVerticle {
         Router router = Router.router(vertx);
 
         router.route().handler(BodyHandler.create());
+        router.get("/").handler(this::handleServiceStatus);
         router.get("/products").handler(this::handleListProducts);
         router.get("/products/:productID").handler(this::handleGetProduct);
         router.post("/products").handler(this::handleAddProduct);
         router.put("/products/:productID").handler(this::handleUpdateProduct);
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+
     }
 
+    private void handleServiceStatus(RoutingContext routingContext) {
+        HttpServerResponse response = routingContext.response();
+        String name = Manifests.read("Service-Name");
+        String version = Manifests.read("Service-Version");
+
+        JsonObject status = new JsonObject().put("name", name).put("version", version).put("status", "up");
+        response.putHeader("content-type", "application/json").end(status.encodePrettily());
+    }
 
     private void handleListProducts(RoutingContext routingContext) {
         JsonArray arr = new JsonArray();

@@ -17,9 +17,12 @@
 
         <!-- dependencies -->
         <vertx.version>3.3.2</vertx.version>
+        <jcabi-manifests.version>1.1</jcabi-manifests.version>
 
         <!-- plugin dependencies -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
         <docker-maven-plugin.version>0.4.11</docker-maven-plugin.version>
     </properties>
 
@@ -34,16 +37,66 @@
             <artifactId>vertx-web</artifactId>
             <version>${vertx.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-manifests</artifactId>
+            <version>${jcabi-manifests.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Service-Name>${artifactId}</Service-Name>
+                            <Service-Version>${project.version}</Service-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>be.rombit.romcore.docker.vertx.poc.ProductRestVerticle</mainClass>
+                            <manifestEntries>
+                                <Service-Name>${artifactId}</Service-Name>
+                                <Service-Version>${project.version}</Service-Version>
+                            </manifestEntries>
+                        </transformer>
+                    </transformers>
                 </configuration>
             </plugin>
 

@@ -24,8 +24,8 @@ The API allows you to list all products, retrieve details for a particular produ
 
 To build and run it:
 
-    docker build -t poc/vertx-rest-java .
-    docker run -t -i -p 8080:8080 poc/vertx-rest-java
+    docker build -t poc-product-service .
+    docker run -t -i -p 8080:8080 poc-product-service
 
 
 Run the server either in your IDE or on the command line, then open your browser and hit
