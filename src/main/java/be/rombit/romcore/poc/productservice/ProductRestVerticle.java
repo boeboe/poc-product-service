@@ -1,4 +1,4 @@
-package be.rombit.romcore.docker.vertx.poc;
+package be.rombit.romcore.poc.productservice;
 
 import com.jcabi.manifests.Manifests;
 import io.vertx.core.AbstractVerticle;
@@ -37,7 +37,6 @@ public class ProductRestVerticle extends AbstractVerticle {
         router.put("/products/:productID").handler(this::handleUpdateProduct);
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
-
     }
 
     private void handleServiceStatus(RoutingContext routingContext) {

@@ -1,4 +1,4 @@
-package be.rombit.romcore.docker.vertx.poc;
+package be.rombit.romcore.poc.productservice;
 
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;

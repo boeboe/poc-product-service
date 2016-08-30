@@ -1,4 +1,4 @@
-package be.rombit.romcore.docker.vertx.poc.model;
+package be.rombit.romcore.poc.productservice.model;
 
 /**
  * Created by boeboe on 29/08/16.
