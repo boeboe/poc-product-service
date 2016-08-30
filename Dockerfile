@@ -10,7 +10,7 @@
 FROM ventura24/java-8-alpine
 
 ENV VERTICLE_NAME be.rombit.romcore.docker.vertx.poc.ProductRestVerticle
-ENV VERTICLE_FILE poc-product-service-0.0.1.jar
+ENV VERTICLE_FILE poc-product-service-1.0.0.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
