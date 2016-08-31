@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Product retrieval or update schema",
+  "description": "A product retrieval or update representation",
+  "id": "product-retrieve",
+  "required": [
+    "id",
+    "name",
+    "price",
+    "weight"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Id",
+      "description": "The id of the product",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "The name of the product"
+    },
+    "price": {
+      "type": "number",
+      "title": "Price",
+      "description": "The price of the product",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "weight": {
+      "type": "integer",
+      "title": "Weight",
+      "description": "The weight of the product",
+      "minimum": 0
+    }
+  }
+}

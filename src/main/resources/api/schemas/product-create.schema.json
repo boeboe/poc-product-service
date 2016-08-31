@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Product creation schema",
+  "description": "A product creation representation",
+  "id": "product-create",
+  "required": [
+    "name",
+    "price",
+    "weight"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "The name of the product"
+    },
+    "price": {
+      "type": "number",
+      "title": "Price",
+      "description": "The price of the product",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "weight": {
+      "type": "integer",
+      "title": "Weight",
+      "description": "The weight of the product",
+      "minimum": 0
+    }
+  }
+}

@@ -28,8 +28,8 @@ import java.nio.file.Paths;
 @RunWith(VertxUnitRunner.class)
 public class RestVerticleTest {
 
-    private static final String RAML_DEFINITION = "/webroot/api/product.raml";
-    private static final String NEW_PRODUCT_EXAMPLE = "/webroot/api/product-new.sample.json";
+    private static final String RAML_DEFINITION = "/api/product.raml";
+    private static final String NEW_PRODUCT_EXAMPLE = "/api/samples/product-create.sample.json";
     private static final String BASE_URI = "http://localhost:8080/";
 
     private static final RamlDefinition api = RamlLoaders.fromClasspath()

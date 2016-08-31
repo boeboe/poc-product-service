@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "title": "Product collection schema",
+  "description": "A product collection representation",
+  "id": "products",
+  "items" : {
+    "title": "Product item",
+    "$ref" : "/api/schemas/product-retrieve.schema.json"
+  }
+}

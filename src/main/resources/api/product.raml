@@ -1,0 +1,82 @@
+#%RAML 0.8
+---
+title: POC Product MicroService
+version: v1
+baseUri: http://localhost:8080/
+mediaType:  application/json
+
+schemas:
+ - product: !include schemas/product-retrieve.schema.json
+ - product-create: !include schemas/product-create.schema.json
+ - products: !include schemas/products.schema.json
+
+resourceTypes:
+  - collection:
+      description: Collection of available <<resourcePathName>>
+      get:
+        description: Get a list of <<resourcePathName>>
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName>>
+                example: |
+                  <<exampleCollection>>
+      post:
+        description: Add a new <<resourcePathName|!singularize>>
+        body:
+          application/json:
+            schema: <<resourcePathName|!singularize>>-create
+            example: |
+              <<exampleItem>>
+        responses:
+          201:
+            body:
+              application/json:
+                schema: <<resourcePathName|!singularize>>
+                example: |
+                  <<exampleItem>>
+  - collection-item:
+      description: Entity representing a <<resourcePathName|!singularize>>
+      get:
+        description: |
+          Get the <<resourcePathName|!singularize>>
+          with <<resourcePathName|!singularize>>Id =
+          {<<resourcePathName|!singularize>>Id}
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleItem>>
+          404:
+            body:
+              application/json:
+                example: |
+                  {"message": "<<resourcePathName|!singularize>> not found" }
+      put:
+        description: |
+          Update the <<resourcePathName|!singularize>> with <<resourcePathName|!singularize>>Id =
+          {<<resourcePathName|!singularize>>Id}
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName|!singularize>>
+                example: |
+                  <<exampleItem>>
+          404:
+            body:
+              application/json:
+                example: |
+                  {"message": "<<resourcePathName|!singularize>> not found" }
+
+/products:
+  type:
+    collection:
+      exampleCollection: !include samples/products.sample.json
+      exampleItem: !include samples/product-create.sample.json
+  /{productId}:
+    type:
+      collection-item:
+        exampleItem: !include samples/product-retrieve.sample.json
