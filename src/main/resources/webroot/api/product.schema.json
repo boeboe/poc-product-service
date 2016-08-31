@@ -3,33 +3,33 @@
   "type": "object",
   "title": "Product schema",
   "description": "A product representation",
-  "required":false,
+  "required": [
+    "name",
+    "price",
+    "weight"
+  ],
   "properties": {
     "id": {
       "type": "string",
       "title": "Id",
       "description": "The id of the product",
       "minLength": 36,
-      "maxLength": 36,
-      "required": false
+      "maxLength": 36
     },
     "name": {
       "type": "string",
       "title": "Name",
-      "description": "The name of the product",
-      "required": true
+      "description": "The name of the product"
     },
     "price": {
       "type": "number",
       "title": "Price",
-      "description": "The price of the product",
-      "required": true
+      "description": "The price of the product"
     },
     "weight": {
       "type": "integer",
       "title": "Weight",
-      "description": "The weight of the product",
-      "required": true
+      "description": "The weight of the product"
     }
   }
 }

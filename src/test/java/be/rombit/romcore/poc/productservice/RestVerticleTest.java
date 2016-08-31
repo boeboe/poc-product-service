@@ -61,8 +61,8 @@ public class RestVerticleTest {
 
     @Test
     public void testAddProductEndpoint(TestContext context) throws URISyntaxException, IOException {
-        String product = new String(Files.readAllBytes(Paths.get(getClass().getResource(NEW_PRODUCT_EXAMPLE).toURI())));
-        product = "{ \"name\" : \"Motorbike\", \"price\" : 150.0, \"weight\" : 800 }";
+        String product = new String(Files.readAllBytes(
+                Paths.get(getClass().getResource(NEW_PRODUCT_EXAMPLE).toURI())));
         checking.path("/products").request().post(Entity.entity(product, MediaType.APPLICATION_JSON_TYPE));
         Assert.assertThat(checking.getLastReport(), RamlMatchers.hasNoViolations());
     }

@@ -23,16 +23,14 @@ resourceTypes:
         description: Add a new <<resourcePathName|!singularize>>
         body:
           application/json:
-            schema: |
-              <<resourcePathName|!singularize>>
+            schema: <<resourcePathName|!singularize>>
             example: |
               <<exampleItem>>
         responses:
           201:
             body:
               application/json:
-                schema: |
-                  <<resourcePathName|!singularize>>
+                schema: <<resourcePathName|!singularize>>
                 example: |
                   <<exampleItem>>
   - collection-item:
@@ -61,8 +59,7 @@ resourceTypes:
           200:
             body:
               application/json:
-                schema: |
-                  <<resourcePathName|!singularize>>
+                schema: <<resourcePathName|!singularize>>
                 example: |
                   <<exampleItem>>
           404:
