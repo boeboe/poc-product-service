@@ -1,22 +1,35 @@
 {
   "$schema": "http://json-schema.org/schema",
   "type": "object",
+  "title": "Product schema",
+  "description": "A product representation",
+  "required":false,
   "properties": {
     "id": {
-      "required": true,
-      "type": "string"
+      "type": "string",
+      "title": "Id",
+      "description": "The id of the product",
+      "minLength": 36,
+      "maxLength": 36,
+      "required": false
     },
     "name": {
-      "required": true,
-      "type": "string"
+      "type": "string",
+      "title": "Name",
+      "description": "The name of the product",
+      "required": true
     },
     "price": {
-      "required": true,
-      "type": "number"
+      "type": "number",
+      "title": "Price",
+      "description": "The price of the product",
+      "required": true
     },
     "weight": {
-      "required": true,
-      "type": "integer"
+      "type": "integer",
+      "title": "Weight",
+      "description": "The weight of the product",
+      "required": true
     }
   }
 }

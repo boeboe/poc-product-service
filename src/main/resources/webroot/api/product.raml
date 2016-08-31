@@ -25,17 +25,22 @@ resourceTypes:
           application/json:
             schema: |
               <<resourcePathName|!singularize>>
+            example: |
+              <<exampleItem>>
         responses:
-          200:
+          201:
             body:
               application/json:
+                schema: |
+                  <<resourcePathName|!singularize>>
                 example: |
-                    { "message": "The <<resourcePathName|!singularize>> has been properly created" }
+                  <<exampleItem>>
   - collection-item:
       description: Entity representing a <<resourcePathName|!singularize>>
       get:
         description: |
-          Get the <<resourcePathName|!singularize>> with <<resourcePathName|!singularize>>Id =
+          Get the <<resourcePathName|!singularize>>
+          with <<resourcePathName|!singularize>>Id =
           {<<resourcePathName|!singularize>>Id}
         responses:
           200:
@@ -69,9 +74,9 @@ resourceTypes:
 /products:
   type:
     collection:
-      exampleCollection: !include products.example.json
-      exampleItem: !include product.example.json
+      exampleCollection: !include products.sample.json
+      exampleItem: !include product-new.sample.json
   /{productId}:
     type:
       collection-item:
-        exampleItem: !include product.example.json
+        exampleItem: !include product-retreive.sample.json
